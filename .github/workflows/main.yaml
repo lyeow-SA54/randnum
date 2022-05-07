@@ -27,13 +27,11 @@ jobs:
       with:
         context: .
         push: true
-        tags: sa54lyeow/rndnum:${{ github.ref_name }}
-  slack:
-    runs-on: ubuntu-latest
-    env:
-      INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    steps:
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/rndnum:${{ github.ref_name }}
+
     - name: Slack Notification
       uses: tokorom/action-slack-incoming-webhook@main
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
         text: "${{ secrets.SLACK_PERSONALINFO }}\nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }}\nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
