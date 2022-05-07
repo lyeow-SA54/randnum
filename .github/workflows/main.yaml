@@ -34,37 +34,4 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.18.0
       with:
-        # For posting a rich message using Block Kit
-        payload: |
-          {
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Name: Yeow Jun Rong Leon"
-                },
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Matriculation: A0249491U"
-                }, 
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "e0941684@u.nus.edu"
-                },
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "${{ github.repositoryUrl }}"
-                },
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }}"
-                },
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "Image url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
-                }
-              }
-          }
-            ]
-          }
+      text: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
