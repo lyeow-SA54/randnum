@@ -8,8 +8,6 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
     - name: Set up Docker Buildx
@@ -27,11 +25,9 @@ jobs:
   slack:
     runs-on: ubuntu-latest
     env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+      INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
-    - name: Send custom JSON data to Slack workflow
-      id: slack
-      uses: slackapi/slack-github-action@v1.18.0
+    - name: Slack Notification
+      uses: tokorom/action-slack-incoming-webhook@main
       with:
-        slack-message: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
+        text: "${{ secrets.SLACK_PERSONALINFO }}\nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }}\nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
