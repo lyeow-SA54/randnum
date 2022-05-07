@@ -34,4 +34,4 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.18.0
       with:
-      text: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
+        text: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
