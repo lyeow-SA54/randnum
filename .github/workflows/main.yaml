@@ -2,7 +2,7 @@ name: SA54_lyeow_cicdWorkshop
 on: 
   push: 
     tags:
-    - 'v*'
+      - 'v*'
 jobs: 
   docker:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: sa54lyeow/rndnum:{{ github.ref_name }}
+        tags: sa54lyeow/rndnum:${{ github.ref_name }}
   slack:
     runs-on: ubuntu-latest
     env:
