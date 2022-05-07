@@ -1,7 +1,6 @@
 name: SA54_lyeow_cicdWorkshop
 on: 
   push: 
-    branches:
     tags:
     - 'v*'
 jobs: 
