@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }}
+        tags: sa54lyeow/rndnum:{{ github.ref_name }}
   slack:
     runs-on: ubuntu-latest
     env:
@@ -34,4 +34,4 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v1.18.0
       with:
-        text: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
+        slack-message: "${{ secrets.SLACK_PERSONALINFO }} \nRepo: ${{ github.repositoryUrl }} \nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }} \nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
