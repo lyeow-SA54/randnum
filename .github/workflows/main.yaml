@@ -34,4 +34,4 @@ jobs:
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        text: "${{ secrets.SLACK_PERSONALINFO }}\nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:{{ github.ref_name }}\nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
+        text: "${{ secrets.SLACK_PERSONALINFO }}\nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum:${{ github.ref_name }}\nImage url: https://hub.docker.com/repository/docker/${{ secrets.DOCKERHUB_ACCOUNT }}/rndnum"
