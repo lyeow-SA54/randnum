@@ -1,9 +1,9 @@
 name: SA54_lyeow_cicdWorkshop
-on: 
+on:
   release:
-    types: [published] 
-    tags:
-      - 'v*'
+    types: [published]
+    tag:
+    - v*
 jobs: 
   docker:
     runs-on: ubuntu-latest
